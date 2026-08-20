@@ -9,6 +9,9 @@ const io = new Server(server);
 
 const PORT = process.env.PORT || 3000;
 
+console.log("SUPABASE_URL exists:", !!process.env.SUPABASE_URL);
+console.log("SUPABASE_ANON_KEY exists:", !!process.env.SUPABASE_ANON_KEY);
+
 // Supabase
 const supabase = createClient(
     process.env.SUPABASE_URL,
