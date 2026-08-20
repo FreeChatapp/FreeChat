@@ -15,10 +15,11 @@ const supabase = createClient(
     process.env.SUPABASE_ANON_KEY
 );
 
-// Public folder
+// Middleware
+app.use(express.json());
 app.use(express.static("public"));
 
-// Test Supabase connection
+// Supabase + Server status
 app.get("/api/status", async (req, res) => {
     const { error } = await supabase
         .from("users")
@@ -38,19 +39,16 @@ app.get("/api/status", async (req, res) => {
     });
 });
 
-
 // Socket.IO
 io.on("connection", (socket) => {
-
     console.log("User connected:", socket.id);
 
     socket.on("disconnect", () => {
         console.log("User disconnected:", socket.id);
     });
-
 });
 
-
+// Start server
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
