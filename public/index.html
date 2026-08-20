@@ -17,7 +17,9 @@
             <p>Chat • Audio Call • Video Call</p>
         </div>
 
-        <div class="welcome">
+        <!-- Welcome Screen -->
+        <div class="welcome" id="welcomeScreen">
+
             <div class="logo">💬</div>
 
             <h2>Welcome to FreeChat</h2>
@@ -27,11 +29,48 @@
                 audio calls and video calls.
             </p>
 
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter your name"
+                maxlength="30"
+            >
+
             <button id="startBtn">Get Started</button>
+
+        </div>
+
+        <!-- Chat Screen -->
+        <div class="chat" id="chatScreen" style="display: none;">
+
+            <div class="chat-header">
+                <h2>FreeChat 💬</h2>
+                <span id="onlineStatus">Connecting...</span>
+            </div>
+
+            <div class="messages" id="messages"></div>
+
+            <div class="message-box">
+
+                <input
+                    type="text"
+                    id="messageInput"
+                    placeholder="Type a message..."
+                    maxlength="500"
+                >
+
+                <button id="sendBtn">Send</button>
+
+            </div>
+
         </div>
 
     </div>
 
+    <!-- Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- Our JavaScript -->
     <script src="app.js"></script>
 
 </body>
